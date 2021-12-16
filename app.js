@@ -20,12 +20,12 @@ app.listen(port, () => {
 // const logininfo = require("./keys.js");
 
 // mongoDBに接続
-// mongoose.connect(
-//   `mongodb+srv://${logininfo.key1}:${logininfo.key2}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
-//   () => {
-//     console.log("mongoDBに接続しました");
-//   }
-// );
+mongoose.connect(
+  `mongodb+srv://${logininfo.key1}:${logininfo.key2}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
+  () => {
+    console.log("mongoDBに接続しました");
+  }
+);
 
 // スキーマの定義
 const userSchema = new mongoose.Schema({

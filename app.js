@@ -21,7 +21,7 @@ app.listen(port, () => {
 
 // mongoDBに接続
 mongoose.connect(
-  `mongodb+srv://${logininfo.key1}:${logininfo.key2}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.NAME}:${process.env.PASS}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
   () => {
     console.log("mongoDBに接続しました");
   }

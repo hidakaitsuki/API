@@ -17,7 +17,7 @@ app.listen(port, () => {
 });
 
 // mongoDBのログイン情報取得
-const logininfo = require("./keys.js");
+// const logininfo = require("./keys.js");
 
 // mongoDBに接続
 // mongoose.connect(

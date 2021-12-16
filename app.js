@@ -25,7 +25,6 @@ mongoose.connect(
   `mongodb+srv://${process.env.NAME}:${process.env.PASS}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
   () => {
     console.log("mongoDBに接続しました");
-    console.log(process.env.NAME+process.env.PASS);
   }
 );
 

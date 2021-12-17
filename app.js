@@ -93,7 +93,7 @@ app.post("/logout", function (req, res) {
 });
 
 app.get("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema({ item: String });
+  const itemSchema = mongoose.Schema({ item: Array });
   const pokemonmodel = mongoose.model("items", itemSchema);
   const items = new pokemonmodel();
   pokemonmodel.find({_id:"61bc2ce2338139b11055ec6f"},function (error, result) {
@@ -103,7 +103,7 @@ app.get("/pokemonitem", function (req, res) {
 
 //
 app.post("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema({ item: String });
+  const itemSchema = mongoose.Schema({ item: Array });
   pokemonmodel = mongoose.model("item", itemSchema);
   const items = new pokemonmodel();
   res.send(req.body);

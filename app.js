@@ -96,6 +96,14 @@ app.get("/", function (req, res) {
   res.send({ test: "aaa" });
 });
 
+app.post("/pokemonitem", function (req, res) {
+  const itemSchema = mongoose.Schema([]);
+  pokemonmodel = mongoose.model("item", itemSchema);
+  const items = new pokemonmodel();
+  items = req.body;
+  items.save();
+});
+
 // mongoose.connect("mongodb://localhost:27017/testdb", { useNewUrlParser: true });
 // const userSchema = new mongoose.Schema({
 //   name: String,

@@ -102,11 +102,11 @@ app.get("/pokemonitem", function (req, res) {
 });
 
 app.post("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema({ item: [Array] });
+  const itemSchema = mongoose.Schema({ item: Array });
   pokemonmodel = mongoose.model("item", itemSchema);
   const items = new pokemonmodel();
   res.send(req.body);
-  items.item = req.body;
+  items.item.Array = req.body;
   items.save();
 });
 

@@ -38,6 +38,8 @@ const userSchema = new mongoose.Schema({
 // userSchema型のデータを"users"に入れる
 const Usermodel = mongoose.model("users", userSchema);
 
+//herokuデプロイ済み https://api-rks.herokuapp.com/
+
 //管理者登録
 app.post("/register", async function (req, res) {
   // アドレスが既に登録済みかどうか確認
@@ -65,6 +67,7 @@ app.post("/register", async function (req, res) {
 app.post("/login", async function (req, res) {
   //   userコレクションに送信するemailとpassの組み合わせが存在するか確認
   Usermodel.find(
+    // AND検索
     { email: req.body.email, pass: req.body.pass },
     function (err, result) {
       // 存在する場合
@@ -83,9 +86,12 @@ app.post("/login", async function (req, res) {
     }
   );
 });
+//  ログアウト
+app.post("/logout", function (req, res) {
+  res.send({ status: 200, messsage: "ログアウトに成功しました" });
+});
 
 app.get("/", function (req, res) {
-
   res.send({ test: "aaa" });
 });
 

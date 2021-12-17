@@ -19,29 +19,28 @@ app.listen(port, () => {
 // mongoDBのログイン情報取得
 // const logininfo = require("./keys.js");
 
-// mongoDBに接続
-mongoose.connect(
-  // herokuに登録した環境変数をもってくる「process.env.設定したkey」でもってこれる
-  `mongodb+srv://${process.env.NAME}:${process.env.PASS}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
-  () => {
-    console.log("mongoDBに接続しました");
-  }
-);
-
-// スキーマの定義
-const userSchema = new mongoose.Schema({
-  email: String,
-  name: String,
-  pass: String,
-});
-
-// userSchema型のデータを"users"に入れる
-const Usermodel = mongoose.model("users", userSchema);
-
 //herokuデプロイ済み https://api-rks.herokuapp.com/
 
 //管理者登録
 app.post("/register", async function (req, res) {
+  // mongoDBに接続
+  mongoose.connect(
+    // herokuに登録した環境変数をもってくる「process.env.設定したkey」でもってこれる
+    `mongodb+srv://${process.env.NAME}:${process.env.PASS}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
+    () => {
+      console.log("mongoDBに接続しました");
+    }
+  );
+  // スキーマの定義
+  const userSchema = new mongoose.Schema({
+    email: String,
+    name: String,
+    pass: String,
+  });
+  // userSchema型のデータを"users"に入れる
+  // usersのコレクションを操作するUsermodelオブジェクト作成
+  const Usermodel = mongoose.model("users", userSchema);
+
   // アドレスが既に登録済みかどうか確認
   Usermodel.find({ email: req.body.email }, function (err, result) {
     //   既に存在する場合

@@ -102,7 +102,7 @@ app.get("/pokemonitem", function (req, res) {
 });
 
 app.post("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema(  [Array] );
+  const itemSchema = mongoose.Schema({ item: [Array] });
   pokemonmodel = mongoose.model("item", itemSchema);
   const items = new pokemonmodel();
   res.send(req.body);

@@ -100,7 +100,7 @@ const itemSchema =new mongoose.Schema({
   __v: Number,
 });
 app.get("/pokemonitem", function (req, res) {
-  const pokemonmodel = mongoose.model("items");
+  const pokemonmodel = mongoose.model("items", itemSchema);
   pokemonmodel.find({}, function (error, result) {
     res.send(result[0]);
   });

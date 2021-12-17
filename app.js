@@ -96,7 +96,7 @@ app.get("/pokemonitem", function (req, res) {
   const itemSchema = mongoose.Schema({ item: [Array] });
   const pokemonmodel = mongoose.model("items", itemSchema);
   const items = new pokemonmodel();
-  pokemonmodel.find(function (error, result) {
+  pokemonmodel.find({_id:"61bc2ce2338139b11055ec6f"},function (error, result) {
     res.send(result);
   });
 });

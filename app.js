@@ -73,7 +73,7 @@ app.post("/login", async function (req, res) {
     }
   );
   // usersのコレクションを操作するUsermodelオブジェクト作成
-  const Usermodel = mongoose.model("users", userSchema);
+  const Usermodel = mongoose.model("users");
   //   userコレクションに送信するemailとpassの組み合わせが存在するか確認
   Usermodel.find(
     // AND検索

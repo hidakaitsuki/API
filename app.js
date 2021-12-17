@@ -93,7 +93,7 @@ app.post("/logout", function (req, res) {
 });
 
 app.get("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema({
+  const itemSchema =new mongoose.Schema({
     _id: String,
     item: Array,
     __v: Number,

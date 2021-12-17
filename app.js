@@ -96,17 +96,17 @@ app.get("/pokemonitem", function (req, res) {
   const itemSchema = mongoose.Schema({ item: [Array] });
   const pokemonmodel = mongoose.model("items", itemSchema);
   const items = new pokemonmodel();
-  pokemonmodel.find({},function (error, result) {
+  pokemonmodel.find(function (error, result) {
     res.send(result);
   });
 });
 
 app.post("/pokemonitem", function (req, res) {
-  const itemSchema = mongoose.Schema({ item: {item1:String} });
+  const itemSchema = mongoose.Schema({ item:Array });
   pokemonmodel = mongoose.model("item", itemSchema);
   const items = new pokemonmodel();
   res.send(req.body);
-  items.item.item1 = req.body;
+  items.item = req.body;
   items.save();
 });
 

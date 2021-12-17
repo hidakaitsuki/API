@@ -94,13 +94,6 @@ app.post("/logout", function (req, res) {
 });
 
 app.get("/pokemonitem", function (req, res) {
-  mongoose.connect(
-    // herokuに登録した環境変数をもってくる「process.env.設定したkey」でもってこれる
-    `mongodb+srv://${process.env.NAME}:${process.env.PASS}@cluster0.bwr5d.mongodb.net/login?retryWrites=true&w=majority`,
-    () => {
-      console.log("mongoDBに接続しました");
-    }
-  );
   const itemSchema =new mongoose.Schema({
     _id: String,
     item: Array,

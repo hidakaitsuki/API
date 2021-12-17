@@ -92,8 +92,11 @@ app.post("/logout", function (req, res) {
   res.send({ status: 200, messsage: "ログアウトに成功しました" });
 });
 
-app.get("/", function (req, res) {
-  res.send({ test: "aaa" });
+app.get("/pokemonitem", function (req, res) {
+  const itemSchema = mongoose.Schema({ item: [Array] });
+  pokemonmodel = mongoose.model("items", itemSchema);
+  const items = new pokemonmodel();
+  res.send(pokemonmodel.find())
 });
 
 app.post("/pokemonitem", function (req, res) {
